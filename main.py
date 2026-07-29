@@ -33,7 +33,7 @@ logging.basicConfig(level=logging.ERROR)
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 if not BOT_TOKEN:
-    print("❌ هەڵە: تکایە BOT_TOKEN لە بەشی Secrets لە Replit دابنێ!")
+    print("❌ هەڵە: تکایە BOT_TOKEN لە بەشی Variables لە Railway دابنێ!")
     exit(1)
 
 bot = Bot(token=BOT_TOKEN)
@@ -131,8 +131,7 @@ async def download_tiktok(url):
 # --- ٥. فەرمانەکانی بۆت ---
 @dp.message(Command("start"))
 async def start_handler(message: types.Message):
-    await message.reply("👋🏼 من دەتوانم ڤیدیۆ و وێنەی TikTok دابەزێنم.
-🔗 تەنها لینکی تیکتۆک بنێرە:")
+    await message.reply("👋🏼 من دەتوانم ڤیدیۆ و وێنەی TikTok دابەزێنم.\n🔗 تەنها لینکی تیکتۆک بنێرە:")
 
 @dp.message(F.text)
 async def handle_links(message: types.Message):
@@ -170,8 +169,7 @@ async def handle_links(message: types.Message):
                 if audio_ready and os.path.exists(temp_clean):
                     song_name = await recognize_song(temp_clean)
 
-                caption = f"👤 : {info['author']}
-❤️ : {info['likes']} | 👀 : {info['views']}"
+                caption = f"👤 : {info['author']}\n❤️ : {info['likes']} | 👀 : {info['views']}"
                 if song_name:
                     caption += f"\n\n🎵 ناوی گۆرانی :\n**{song_name}**"
                 caption += "\n\n⚙️Developer Bot @bu404"
